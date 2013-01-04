@@ -1,33 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-  <xs:element name="result">
+  
+  <!--
+    XML Schema for the XML returned by DRI Linked Data Catalog (Elda)
+    Author: Rob Walpole <robkwalpole@gmail.com>
+    Date: 4/1/2013
+  -->
+  
+  <!-- types start here -->
+  
+  <xs:complexType name="decimalType">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute name="datatype" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>      
+  </xs:complexType>
+  
+  <xs:complexType name="hrefType">
+    <xs:attribute name="href" use="required" type="xs:anyURI"/>
+  </xs:complexType>
+  
+  <xs:complexType name="itemType">
+    <xs:sequence>
+      <xs:element ref="item" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="longType">
+    <xs:simpleContent>
+      <xs:extension base="xs:long">
+        <xs:attribute name="datatype" use="required" type="xs:NCName"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="referenceType">
+    <xs:sequence minOccurs="0">
+      <xs:element ref="reference"/>
+    </xs:sequence>
+    <xs:attribute name="href" type="xs:anyURI"/>
+  </xs:complexType> 
+  
+  <!-- elements start here -->
+  
+  <xs:element name="dri_collection" type="referenceType"/>
+  
+  <xs:element name="dct_created">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="definition"/>
-        <xs:element ref="extendedMetadataVersion"/>
-        <xs:element ref="first"/>
-        <xs:element ref="isPartOf"/>
-        <xs:element ref="items"/>
-        <xs:element ref="itemsPerPage"/>
-        <xs:element ref="page"/>
-        <xs:element ref="startIndex"/>
-        <xs:element ref="type"/>
+      <xs:simpleContent>
+        <xs:extension base="xs:dateTime">
+          <xs:attribute name="datatype" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="dct_description">
+    <xs:complexType mixed="true">
+      <xs:attribute name="datatype" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="extendedMetadataVersion" type="hrefType"/>
+  
+  <xs:element name="definition"/>
+  
+  <xs:element name="dri_batch" type="referenceType"/>
+  
+  <xs:element name="dri_closure">
+    <xs:complexType>
+      <xs:sequence minOccurs="0">
+        <xs:element ref="dri_closurePeriod"/>
+        <xs:element ref="dri_closureType"/>
+        <xs:element ref="dri_descriptionStatus"/>
+        <xs:element ref="dri_documentStatus"/>
+        <xs:element ref="dri_reviewDate"/>
       </xs:sequence>
-      <xs:attribute name="format" use="required" type="xs:NCName"/>
-      <xs:attribute name="href" use="required" type="xs:anyURI"/>
-      <xs:attribute name="version" use="required" type="xs:decimal"/>
+      <xs:attribute name="id" type="xs:string"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="extendedMetadataVersion">
+  
+  <xs:element name="dri_closurePeriod" type="decimalType"/>
+  
+  <xs:element name="dri_closureType" type="referenceType"/>
+  
+  <xs:element name="dri_descriptionStatus" type="decimalType"/>
+  
+  <xs:element name="dri_directory">
     <xs:complexType>
-      <xs:attribute name="href" use="required" type="xs:anyURI"/>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="datatype" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="first">
+  
+  <xs:element name="dri_documentStatus" type="decimalType"/>
+  
+  <xs:element name="dri_file" type="itemType"/>
+  
+  <xs:element name="dri_parent" type="referenceType"/>
+  
+  <xs:element name="dri_reviewDate">
     <xs:complexType>
-      <xs:attribute name="href" use="required" type="xs:anyURI"/>
+      <xs:simpleContent>
+        <xs:extension base="xs:dateTime">
+          <xs:attribute name="datatype" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
+  
+  <xs:element name="first" type="hrefType"/>
+  
+  <xs:element name="hasPart" type="hrefType"/>
+  
   <xs:element name="isPartOf">
     <xs:complexType>
       <xs:sequence>
@@ -38,50 +127,7 @@
       <xs:attribute name="href" use="required" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="hasPart">
-    <xs:complexType>
-      <xs:attribute name="href" use="required" type="xs:anyURI"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="items" type="itemType"/>
-  <xs:element name="itemsPerPage">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:integer">
-          <xs:attribute name="datatype" use="required" type="xs:NCName"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="page">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:integer">
-          <xs:attribute name="datatype" use="required" type="xs:NCName"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="startIndex">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:integer">
-          <xs:attribute name="datatype" use="required" type="xs:NCName"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="definition">
-    <xs:complexType>
-      <xs:attribute name="href" use="required" type="xs:anyURI"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="type" type="itemType"/>
-  <xs:complexType name="itemType">
-    <xs:sequence>
-      <xs:element ref="item"/>
-    </xs:sequence>
-  </xs:complexType>
+  
   <xs:element name="item">
     <xs:complexType mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -90,29 +136,56 @@
         <xs:element ref="dct_description"/>
         <xs:element ref="reference"/>
         <xs:element ref="uuid"/>
+        <xs:element ref="dri_batch"/>
+        <xs:element ref="dri_closure"/>
+        <xs:element ref="dri_collection"/>
+        <xs:element ref="dri_parent"/>
+        <xs:element ref="dri_file"/>
+        <xs:element ref="dri_directory"/>
       </xs:choice>
       <xs:attribute name="datatype" type="xs:NCName"/>
       <xs:attribute name="href" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="dct_created">
-    <xs:complexType>
-      <xs:simpleContent>
-        <xs:extension base="xs:dateTime">
-          <xs:attribute name="datatype" use="required" type="xs:NCName"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="dct_description">
-    <xs:complexType mixed="true">
-      <xs:attribute name="datatype" use="required" type="xs:NCName"/>
-    </xs:complexType>
-  </xs:element>
+  
+  <xs:element name="items" type="itemType"/>
+  
+  <xs:element name="itemsPerPage" type="longType"/>
+  
+  <xs:element name="next" type="hrefType"/>
+  
+  <xs:element name="page" type="longType"/>
+  
   <xs:element name="reference" type="itemType"/>
+  
+  <xs:element name="result">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="definition"/>
+        <xs:element ref="extendedMetadataVersion"/>
+        <xs:element ref="first"/>
+        <xs:element ref="isPartOf"/>
+        <xs:element ref="items"/>
+        <xs:element ref="itemsPerPage"/>
+        <xs:element ref="next"/>
+        <xs:element ref="page"/>
+        <xs:element ref="startIndex"/>
+        <xs:element ref="type"/>
+      </xs:sequence>
+      <xs:attribute name="format" use="required" type="xs:NCName"/>
+      <xs:attribute name="href" use="required" type="xs:anyURI"/>
+      <xs:attribute name="version" use="required" type="xs:decimal"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="startIndex" type="longType"/>
+    
+  <xs:element name="type" type="itemType"/>
+  
   <xs:element name="uuid">
     <xs:complexType mixed="true">
       <xs:attribute name="datatype" use="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
+  
 </xs:schema>
