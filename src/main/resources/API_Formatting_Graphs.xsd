@@ -134,19 +134,19 @@
   
   <xs:element name="item">
     <xs:complexType mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="type"/>
-        <xs:element ref="dct_created"/>
-        <xs:element ref="dct_description"/>
-        <xs:element ref="reference"/>
-        <xs:element ref="uuid"/>
-        <xs:element ref="dri_batch"/>
-        <xs:element ref="dri_closure"/>
-        <xs:element ref="dri_collection"/>
-        <xs:element ref="dri_parent"/>
-        <xs:element ref="dri_file"/>
-        <xs:element ref="dri_directory"/>
-      </xs:choice>
+      <xs:all>
+        <xs:element ref="type" minOccurs="0"/>
+        <xs:element ref="dct_created" minOccurs="0"/>
+        <xs:element ref="dct_description" minOccurs="0"/>
+        <xs:element ref="reference" minOccurs="0"/>
+        <xs:element ref="uuid" minOccurs="0"/>
+        <xs:element ref="dri_batch" minOccurs="0"/>
+        <xs:element ref="dri_closure" minOccurs="0"/>
+        <xs:element ref="dri_collection" minOccurs="0"/>
+        <xs:element ref="dri_parent" minOccurs="0"/>
+        <xs:element ref="dri_file" minOccurs="0"/>
+        <xs:element ref="dri_directory" minOccurs="0"/>
+      </xs:all>
       <xs:attribute name="datatype" type="xs:NCName"/>
       <xs:attribute name="href" type="xs:anyURI"/>
     </xs:complexType>
@@ -164,18 +164,18 @@
   
   <xs:element name="result">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="definition"/>
-        <xs:element ref="extendedMetadataVersion"/>
-        <xs:element ref="first"/>
-        <xs:element ref="isPartOf"/>
-        <xs:element ref="items"/>
-        <xs:element ref="itemsPerPage"/>
-        <xs:element ref="next"/>
-        <xs:element ref="page"/>
-        <xs:element ref="startIndex"/>
-        <xs:element ref="type"/>
-      </xs:sequence>
+      <xs:all>
+        <xs:element ref="definition" minOccurs="0"/>
+        <xs:element ref="extendedMetadataVersion" minOccurs="0"/>
+        <xs:element ref="first" minOccurs="0"/>
+        <xs:element ref="isPartOf" minOccurs="0"/>
+        <xs:element ref="items" minOccurs="0"/>
+        <xs:element ref="itemsPerPage" minOccurs="0"/>
+        <xs:element ref="next" minOccurs="0"/>
+        <xs:element ref="page" minOccurs="0"/>
+        <xs:element ref="startIndex" minOccurs="0"/>
+        <xs:element ref="type" minOccurs="0"/>
+      </xs:all>
       <xs:attribute name="format" use="required" type="xs:NCName"/>
       <xs:attribute name="href" use="required" type="xs:anyURI"/>
       <xs:attribute name="version" use="required" type="xs:decimal"/>
