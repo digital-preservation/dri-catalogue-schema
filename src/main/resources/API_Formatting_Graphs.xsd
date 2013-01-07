@@ -58,7 +58,11 @@
   
   <xs:element name="dct_description">
     <xs:complexType mixed="true">
-      <xs:attribute name="datatype" use="required" type="xs:NCName"/>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="datatype" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
   
@@ -184,7 +188,11 @@
   
   <xs:element name="uuid">
     <xs:complexType mixed="true">
-      <xs:attribute name="datatype" use="required" type="xs:NCName"/>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="datatype" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
   
