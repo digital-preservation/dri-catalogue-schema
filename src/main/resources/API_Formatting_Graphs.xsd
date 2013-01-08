@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+  xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+  jaxb:version="2.0">
+  <xs:annotation>
+    <xs:appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="uk.gov.nationalarchives.dri.catalogue"/>
+      </jaxb:schemaBindings>
+    </xs:appinfo>
+  </xs:annotation>
   
   <!--
     XML Schema for the XML returned by DRI Linked Data Catalog (Elda)
