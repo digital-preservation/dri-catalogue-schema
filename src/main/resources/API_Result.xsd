@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    targetNamespace="http://nationalarchives.gov.uk/dri/catalogue/api"
+    xmlns="http://nationalarchives.gov.uk/dri/catalogue/api"
+    jaxb:version="2.0">
+    <xs:annotation>
+        <xs:appinfo>
+            <jaxb:schemaBindings>
+                <jaxb:package name="uk.gov.nationalarchives.dri.catalogue.api"/>
+            </jaxb:schemaBindings>
+        </xs:appinfo>
+    </xs:annotation>
+    
+    <xs:complexType name="apiResultType">
+        <xs:sequence>
+            <xs:element name="uuid" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>    
+    
+    <xs:element name="result" type="apiResultType"/>
+
+</xs:schema>
