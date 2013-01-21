@@ -103,7 +103,7 @@
     <xs:attribute name="version" use="required" type="xs:decimal"/>
   </xs:complexType>
   
-  <xs:complexType name="itemType" mixed="true">
+  <xs:complexType name="itemType">
     <xs:sequence>
       <xs:element name="dct_created"  type="dateTimeType" minOccurs="0"/>
       <xs:element name="dri_batch" type="referenceType" minOccurs="0"/>
