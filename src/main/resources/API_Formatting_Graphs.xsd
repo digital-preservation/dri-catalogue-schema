@@ -1,149 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-  xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
-  jaxb:version="2.0">
-  <xs:annotation>
-    <xs:appinfo>
-      <jaxb:schemaBindings>
-        <jaxb:package name="uk.gov.nationalarchives.dri.catalogue"/>
-      </jaxb:schemaBindings>
-    </xs:appinfo>
-  </xs:annotation>
-  
-  <!--
-    XML Schema for the XML returned by DRI Linked Data Catalog (Elda)
-    Author: Rob Walpole <robkwalpole@gmail.com>
-    Date: 4/1/2013
-  -->
-  
-  <!-- types start here -->
-  
-  <xs:complexType name="decimalType">
-    <xs:simpleContent>
-      <xs:extension base="xs:decimal">
-        <xs:attribute name="datatype" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>      
-  </xs:complexType>
-  
-  <xs:complexType name="hrefType">
-    <xs:attribute name="href" use="required" type="xs:anyURI"/>
-  </xs:complexType>
-  
-  <xs:complexType name="itemsType">
-    <xs:sequence>
-      <xs:element name="item" type="itemType" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  
-  <xs:complexType name="longType">
-    <xs:simpleContent>
-      <xs:extension base="xs:long">
-        <xs:attribute name="datatype" use="required" type="xs:NCName"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  
-  <xs:complexType name="dateTimeType">
-    <xs:simpleContent>
-      <xs:extension base="xs:dateTime">
-        <xs:attribute name="datatype" use="required" type="xs:NCName"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  
-  <xs:complexType name="stringNCNameType" mixed="true">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="datatype" use="required" type="xs:NCName"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>  
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	jaxb:version="2.0">
+	<xs:annotation>
+		<xs:appinfo>
+			<jaxb:schemaBindings>
+				<jaxb:package name="uk.gov.nationalarchives.dri.catalogue" />
+			</jaxb:schemaBindings>
+		</xs:appinfo>
+	</xs:annotation>
 
-  <xs:complexType name="stringType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="datatype" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  
-  <xs:complexType name="referenceType">
-    <xs:sequence minOccurs="0">
-      <xs:element name="reference" type="itemsType"/>
-    </xs:sequence>
-    <xs:attribute name="href" type="xs:anyURI"/>
-  </xs:complexType>
-  
-  <xs:complexType name="isPartOfType">
-    <xs:sequence>
-      <xs:element name="definition" type="hrefType"/>
-      <xs:element name="hasPart" type="hrefType"/>
-      <xs:element name="type" type="itemsType"/>
-    </xs:sequence>
-    <xs:attribute name="href" use="required" type="xs:anyURI"/>
-  </xs:complexType>
-  
-  <xs:complexType name="resultType">
-    <xs:sequence>
-      <xs:element name="definition" minOccurs="0"/>
-      <xs:element name="extendedMetadataVersion" type="hrefType" minOccurs="0"/>
-      <xs:element name="primaryTopic" type="primaryTopicType" minOccurs="0"/>
-      <xs:element name="first" type="hrefType" minOccurs="0"/>
-      <xs:element name="isPartOf" type="isPartOfType" minOccurs="0"/>
-      <xs:element name="items" type="itemsType" minOccurs="0"/>
-      <xs:element name="itemsPerPage" type="longType" minOccurs="0"/>
-      <xs:element name="next" type="hrefType" minOccurs="0"/>
-      <xs:element name="page" type="longType" minOccurs="0"/>
-      <xs:element name="startIndex" type="longType" minOccurs="0"/>
-      <xs:element name="type" type="itemsType" minOccurs="0"/> 
-    </xs:sequence>
-    <xs:attribute name="format" use="required" type="xs:NCName"/>
-    <xs:attribute name="href" use="required" type="xs:anyURI"/>
-    <xs:attribute name="version" use="required" type="xs:decimal"/>
-  </xs:complexType>
-  
-  <xs:complexType name="itemType">
-    <xs:sequence>
-      <xs:element name="dct_created"  type="dateTimeType" minOccurs="0"/>
-      <xs:element name="dri_batch" type="referenceType" minOccurs="0"/>
-      <xs:element name="dri_closure" type="dri_closureType" minOccurs="0"/>
-      <xs:element name="dri_collection" type="referenceType" minOccurs="0"/>
-      <xs:element name="dri_file" type="itemsType" minOccurs="0"/>
-      <xs:element name="dri_directory" type="stringType" minOccurs="0"/>
-      <xs:element name="dri_parent" type="referenceType" minOccurs="0"/>
-      <xs:element name="dct_description" type="stringNCNameType" minOccurs="0"/>
-      <xs:element name="reference" type="itemsType" minOccurs="0"/>
-      <xs:element name="type" type="itemsType" minOccurs="0"/>
-      <xs:element name="uuid" type="stringNCNameType" minOccurs="0"/>
-    </xs:sequence>
-    <xs:attribute name="datatype" type="xs:NCName"/>
-    <xs:attribute name="href" type="xs:anyURI"/>
-  </xs:complexType>
-  
-  <xs:complexType name="dri_closureType">
-    <xs:sequence minOccurs="0">
-      <xs:element name="dri_closurePeriod" type="decimalType"/>
-      <xs:element name="dri_closureType" type="referenceType"/>
-      <xs:element name="dri_descriptionStatus" type="decimalType"/>
-      <xs:element name="dri_documentStatus" type="decimalType"/>
-      <xs:element name="dri_reviewDate" type="dateTimeType"/>
-    </xs:sequence>
-    <xs:attribute name="id" type="xs:string"/>
-  </xs:complexType>
-  
-  <xs:complexType name="primaryTopicType">
-    <xs:sequence>
-      <xs:element name="dct_created"  type="dateTimeType" minOccurs="0"/>
-      <xs:element name="dri_exportStatus" type="referenceType" minOccurs="0"/>
-      <xs:element name="dri_username" type="stringType" minOccurs="0"/>
-      <xs:element name="isPrimaryTopicOf" type="hrefType" minOccurs="0"/>
-      <xs:element name="rdfs_member" type="itemsType" minOccurs="0"/>
-      <xs:element name="type" type="itemsType" minOccurs="0"/>
-    </xs:sequence>
-    <xs:attribute name="href" type="xs:anyURI"/>
-  </xs:complexType>
- 
-  <xs:element name="result" type="resultType"/>
-  
+	<!-- XML Schema for the XML returned by DRI Linked Data Catalog (Elda) Author: 
+		Rob Walpole <robkwalpole@gmail.com> Date: 4/1/2013 -->
+
+	<!-- types start here -->
+
+	<xs:complexType name="decimalType">
+		<xs:simpleContent>
+			<xs:extension base="xs:decimal">
+				<xs:attribute name="datatype" type="xs:string" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="hrefType">
+		<xs:attribute name="href" use="required" type="xs:anyURI" />
+	</xs:complexType>
+
+	<xs:complexType name="itemsType">
+		<xs:sequence>
+			<xs:element name="item" type="itemType" maxOccurs="unbounded" />
+			<xs:element name="reference" type="itemReferenceType" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="href" type="xs:anyURI" />
+	</xs:complexType>
+
+	<xs:complexType name="itemReferenceType">
+		<xs:sequence>
+			<xs:element name="item" type="xs:string"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="longType">
+		<xs:simpleContent>
+			<xs:extension base="xs:long">
+				<xs:attribute name="datatype" use="required" type="xs:NCName" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="dateTimeType">
+		<xs:simpleContent>
+			<xs:extension base="xs:dateTime">
+				<xs:attribute name="datatype" use="required" type="xs:NCName" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="stringNCNameType" mixed="true">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="datatype" use="required" type="xs:NCName" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="stringType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="datatype" type="xs:string" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="referenceType">
+		<xs:sequence minOccurs="0">
+			<xs:element name="reference" type="itemsType" />
+		</xs:sequence>
+		<xs:attribute name="href" type="xs:anyURI" />
+	</xs:complexType>
+
+	<xs:complexType name="isPartOfType">
+		<xs:sequence>
+			<xs:element name="definition" type="hrefType" />
+			<xs:element name="hasPart" type="hrefType" />
+			<xs:element name="type" type="itemsType" />
+		</xs:sequence>
+		<xs:attribute name="href" use="required" type="xs:anyURI" />
+	</xs:complexType>
+
+	<xs:complexType name="resultType">
+		<xs:sequence>
+			<xs:element name="definition" minOccurs="0" />
+			<xs:element name="extendedMetadataVersion" type="hrefType"
+				minOccurs="0" />
+			<xs:element name="primaryTopic" type="primaryTopicType"
+				minOccurs="0" />
+			<xs:element name="first" type="hrefType" minOccurs="0" />
+			<xs:element name="isPartOf" type="isPartOfType" minOccurs="0" />
+			<xs:element name="items" type="itemsType" minOccurs="0" />
+			<xs:element name="itemsPerPage" type="longType" minOccurs="0" />
+			<xs:element name="next" type="hrefType" minOccurs="0" />
+			<xs:element name="page" type="longType" minOccurs="0" />
+			<xs:element name="startIndex" type="longType" minOccurs="0" />
+			<xs:element name="type" type="itemsType" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="format" use="required" type="xs:NCName" />
+		<xs:attribute name="href" use="required" type="xs:anyURI" />
+		<xs:attribute name="version" use="required" type="xs:decimal" />
+	</xs:complexType>
+
+	<xs:complexType name="itemType">
+		<xs:sequence>
+			<xs:element name="dct_created" type="dateTimeType"
+				minOccurs="0" />
+			<xs:element name="dri_batch" type="referenceType"
+				minOccurs="0" />
+			<xs:element name="dri_closure" type="dri_closureType"
+				minOccurs="0" />
+			<xs:element name="dri_collection" type="referenceType"
+				minOccurs="0" />
+			<xs:element name="dri_file" type="itemsType" minOccurs="0" />
+			<xs:element name="dri_directory" type="stringType"
+				minOccurs="0" />
+			<xs:element name="dri_parent" type="referenceType"
+				minOccurs="0" />
+			<xs:element name="dct_description" type="stringNCNameType"
+				minOccurs="0" />
+			<xs:element name="reference" type="itemsType" minOccurs="0" />
+			<xs:element name="type" type="itemsType" minOccurs="0" />
+			<xs:element name="uuid" type="stringNCNameType" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="datatype" type="xs:NCName" />
+		<xs:attribute name="href" type="xs:anyURI" />
+	</xs:complexType>
+
+	<xs:complexType name="dri_closureType">
+		<xs:sequence minOccurs="0">
+			<xs:element name="dri_closurePeriod" type="decimalType" />
+			<xs:element name="dri_closureType" type="referenceType" />
+			<xs:element name="dri_descriptionStatus" type="decimalType" />
+			<xs:element name="dri_documentStatus" type="decimalType" />
+			<xs:element name="dri_reviewDate" type="dateTimeType" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="primaryTopicType">
+		<xs:sequence>
+			<xs:element name="dct_created" type="dateTimeType"
+				minOccurs="0" />
+			<xs:element name="dri_exportStatus" type="referenceType"
+				minOccurs="0" />
+			<xs:element name="dri_username" type="stringType"
+				minOccurs="0" />
+			<xs:element name="isPrimaryTopicOf" type="hrefType"
+				minOccurs="0" />
+			<xs:element name="rdfs_member" type="itemsType" minOccurs="0" />
+			<xs:element name="type" type="itemsType" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="href" type="xs:anyURI" />
+	</xs:complexType>
+
+	<xs:element name="result" type="resultType" />
+
 </xs:schema>
