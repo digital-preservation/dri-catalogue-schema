@@ -29,8 +29,8 @@
 
 	<xs:complexType name="itemsType">
 		<xs:sequence>
-			<xs:element name="item" type="itemType" maxOccurs="unbounded" />
-			<xs:element name="reference" type="itemReferenceType" maxOccurs="1" />
+			<xs:element name="item" type="itemType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="reference" type="itemReferenceType" minOccurs="0" maxOccurs="1" />
 		</xs:sequence>
 		<xs:attribute name="href" type="xs:anyURI" />
 	</xs:complexType>
@@ -121,12 +121,18 @@
 				minOccurs="0" />
 			<xs:element name="dri_collection" type="referenceType"
 				minOccurs="0" />
+			<xs:element name="dri_exportStatus" type="hrefType"
+				minOccurs="0" />
 			<xs:element name="dri_file" type="itemsType" minOccurs="0" />
 			<xs:element name="dri_directory" type="stringType"
 				minOccurs="0" />
 			<xs:element name="dri_parent" type="referenceType"
 				minOccurs="0" />
 			<xs:element name="dct_description" type="stringNCNameType"
+				minOccurs="0" />
+			<xs:element name="dri_username" type="stringType" 
+				minOccurs="0" />
+			<xs:element name="rdfs_member" type="itemsType"
 				minOccurs="0" />
 			<xs:element name="reference" type="itemsType" minOccurs="0" />
 			<xs:element name="type" type="itemsType" minOccurs="0" />
