@@ -35,13 +35,6 @@
 		<xs:attribute name="href" type="xs:anyURI" />
 	</xs:complexType>
 
-	<xs:complexType name="itemReferenceType">
-		<xs:sequence>
-			<xs:element name="item" type="xs:string"
-				minOccurs="0" />
-		</xs:sequence>
-	</xs:complexType>
-
 	<xs:complexType name="longType">
 		<xs:simpleContent>
 			<xs:extension base="xs:long">
@@ -134,13 +127,19 @@
 				minOccurs="0" />
 			<xs:element name="rdfs_member" type="itemsType"
 				minOccurs="0" />
-			<xs:element name="reference" type="itemsType" minOccurs="0" />
+			<xs:element name="reference" type="itemReferenceType" minOccurs="0" />
 			<xs:element name="type" type="itemsType" minOccurs="0" />
 			<xs:element name="uuid" type="stringNCNameType" minOccurs="0" />
 		</xs:sequence>
 		<xs:attribute name="datatype" type="xs:NCName" />
 		<xs:attribute name="href" type="xs:anyURI" />
 	</xs:complexType>
+	
+	<xs:complexType name="itemReferenceType">
+	<xs:sequence>
+			<xs:element name="item" type="stringType" minOccurs="0"/>
+	</xs:sequence>
+    </xs:complexType>
 
 	<xs:complexType name="dri_closureType">
 		<xs:sequence minOccurs="0">
