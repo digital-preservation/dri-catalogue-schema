@@ -22,6 +22,14 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
+	
+	<xs:complexType name="integerType">
+		<xs:simpleContent>
+			<xs:extension base="xs:integer">
+				<xs:attribute name="datatype" type="xs:string" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 
 	<xs:complexType name="hrefType">
 		<xs:attribute name="href" use="required" type="xs:anyURI" />
@@ -145,8 +153,8 @@
 		<xs:sequence minOccurs="0">
 			<xs:element name="dri_closurePeriod" type="decimalType" />
 			<xs:element name="dri_closureType" type="referenceType" />
-			<xs:element name="dri_descriptionStatus" type="decimalType" />
-			<xs:element name="dri_documentStatus" type="decimalType" />
+			<xs:element name="dri_descriptionStatus" type="integerType" />
+			<xs:element name="dri_documentStatus" type="integerType" />
 			<xs:element name="dri_reviewDate" type="dateTimeType" />
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" />
