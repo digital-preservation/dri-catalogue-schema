@@ -133,7 +133,7 @@
 				minOccurs="0" />
 			<xs:element name="dri_username" type="stringType" 
 				minOccurs="0" />
-			<xs:element name="rdfs_member" type="itemsType"
+			<xs:element name="dri_exportMember" type="itemsType"
 				minOccurs="0" />
 			<xs:element name="reference" type="itemReferenceType" minOccurs="0" />
 			<xs:element name="type" type="itemsType" minOccurs="0" />
@@ -174,7 +174,7 @@
 				minOccurs="0" />
 			<xs:element name="isPrimaryTopicOf" type="hrefType"
 				minOccurs="0" />
-			<xs:element name="rdfs_member" type="itemsType" minOccurs="0" />
+			<xs:element name="dri_exportMember" type="itemsType" minOccurs="0" />
 			<xs:element name="type" type="itemsType" minOccurs="0" />
 		</xs:sequence>
 		<xs:attribute name="href" type="xs:anyURI" />
