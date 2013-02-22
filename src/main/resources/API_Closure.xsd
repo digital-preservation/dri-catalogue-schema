@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    xmlns="http://nationalarchives.gov.uk/dri/closure"
+    xmlns:c="http://nationalarchives.gov.uk/dri/closure"
+    targetNamespace="http://nationalarchives.gov.uk/dri/closure">
+    
+    <xs:element name="closures" type="closuresType">
+        <xs:unique name="closureUUIDKey">
+            <xs:selector xpath="c:closure"/>
+            <xs:field xpath="c:uuid" />
+        </xs:unique>
+    </xs:element>
+    
+    <xs:complexType name="closuresType">
+        <xs:sequence>
+        	<xs:choice>
+            	<xs:element ref="closure" maxOccurs="unbounded"/>
+            	<xs:element ref="query"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>    
+    
+    <xs:element name="query" type="queryType">
+        <xs:unique name="queryClosureUUIDKey">
+            <xs:selector xpath="c:closure"/>
+            <xs:field xpath="c:uuid" />
+        </xs:unique>
+    </xs:element>
+   
+   <xs:complexType name="queryType">
+   	<xs:sequence>
+   		<xs:element name="closure" type="closureQueryType" maxOccurs="unbounded"/>
+   	</xs:sequence>
+   </xs:complexType>
+    
+  <xs:complexType name="closureQueryType">
+  	<xs:sequence>
+  		<xs:element ref="uuid"/>
+  	</xs:sequence>
+  </xs:complexType>  
+    
+   <xs:element name="closure" type="closureType"/>
+    
+    <xs:complexType name="closureType">
+        <xs:sequence>
+            <xs:element ref="uuid"/>
+            <xs:element name="documentClosureStatus" type="closureStatusType"/>
+            <xs:element name="descriptionClosureStatus" type="closureStatusType"/>
+            <xs:element name="closureType" type="closureTypeType"/>
+            <xs:element name="closureCode" type="closureCodeType"/>
+            <xs:element name="openingDate" type="openingDateType"/>
+            <xs:element name="author" type="authorType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+     <xs:element name="uuid" type="uuidType"/>
+    
+    <xs:simpleType name="uuidType">
+        <xs:annotation>
+            <xs:documentation>v4 UUID</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="closureStatusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OPEN"/>
+            <xs:enumeration value="CLOSED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="closureTypeType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Open on Transfer</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Closed Until</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="closureCodeType">
+        <xs:restriction base="xs:nonNegativeInteger">
+            <xs:totalDigits value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="openingDateType">
+        <xs:restriction base="xs:date"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="authorType">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+</xs:schema>
