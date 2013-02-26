@@ -22,7 +22,7 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	
+
 	<xs:complexType name="integerType">
 		<xs:simpleContent>
 			<xs:extension base="xs:integer">
@@ -37,8 +37,10 @@
 
 	<xs:complexType name="itemsType">
 		<xs:sequence>
-			<xs:element name="item" type="itemType" minOccurs="0" maxOccurs="unbounded" />
-			<xs:element name="reference" type="itemReferenceType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="item" type="itemType" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element name="reference" type="itemReferenceType"
+				minOccurs="0" maxOccurs="1" />
 		</xs:sequence>
 		<xs:attribute name="href" type="xs:anyURI" />
 	</xs:complexType>
@@ -116,6 +118,8 @@
 		<xs:sequence>
 			<xs:element name="dct_created" type="dateTimeType"
 				minOccurs="0" />
+			<xs:element name="dct_identifier" type="stringType"
+				minOccurs="0" />
 			<xs:element name="dri_batch" type="referenceType"
 				minOccurs="0" />
 			<xs:element name="dri_closure" type="dri_closureType"
@@ -131,23 +135,24 @@
 				minOccurs="0" />
 			<xs:element name="dct_description" type="stringNCNameType"
 				minOccurs="0" />
-			<xs:element name="dri_username" type="stringType" 
+			<xs:element name="dri_username" type="stringType"
 				minOccurs="0" />
 			<xs:element name="dri_exportMember" type="itemsType"
 				minOccurs="0" />
-			<xs:element name="reference" type="itemReferenceType" minOccurs="0" />
+			<xs:element name="reference" type="itemReferenceType"
+				minOccurs="0" />
 			<xs:element name="type" type="itemsType" minOccurs="0" />
 			<xs:element name="uuid" type="stringNCNameType" minOccurs="0" />
 		</xs:sequence>
 		<xs:attribute name="datatype" type="xs:NCName" />
 		<xs:attribute name="href" type="xs:anyURI" />
 	</xs:complexType>
-	
+
 	<xs:complexType name="itemReferenceType">
-	<xs:sequence>
-			<xs:element name="item" type="stringType" minOccurs="0"/>
-	</xs:sequence>
-    </xs:complexType>
+		<xs:sequence>
+			<xs:element name="item" type="stringType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
 
 	<xs:complexType name="dri_closureType">
 		<xs:sequence minOccurs="0">
@@ -174,7 +179,8 @@
 				minOccurs="0" />
 			<xs:element name="isPrimaryTopicOf" type="hrefType"
 				minOccurs="0" />
-			<xs:element name="dri_exportMember" type="itemsType" minOccurs="0" />
+			<xs:element name="dri_exportMember" type="itemsType"
+				minOccurs="0" />
 			<xs:element name="type" type="itemsType" minOccurs="0" />
 			<xs:element name="dri_completedDate" type="dateTimeType"
 				minOccurs="0" />
