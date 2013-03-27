@@ -184,6 +184,8 @@
 			<xs:element name="type" type="itemsType" minOccurs="0" />
 			<xs:element name="dri_completedDate" type="dateTimeType"
 				minOccurs="0" />
+			<xs:element name="dri_recordListMember" type="itemsType"
+				minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="href" type="xs:anyURI" />
 	</xs:complexType>
