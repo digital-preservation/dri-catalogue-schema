@@ -135,7 +135,7 @@
 				minOccurs="0" />
 			<xs:element name="dct_description" type="stringNCNameType"
 				minOccurs="0" />
-			<xs:element name="dri_username" type="stringType"
+			<xs:element name="username" type="stringType"
 				minOccurs="0" />
 			<xs:element name="dri_exportMember" type="itemsType"
 				minOccurs="0" />
@@ -171,7 +171,7 @@
 				minOccurs="0" />
 			<xs:element name="dri_exportStatus" type="referenceType"
 				minOccurs="0" />
-			<xs:element name="dri_username" type="stringType"
+			<xs:element name="username" type="stringType"
 				minOccurs="0" />
 			<xs:element name="dri_closure" type="dri_closureType"
 				minOccurs="0" />
