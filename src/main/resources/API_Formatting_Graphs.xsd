@@ -186,6 +186,7 @@
 				minOccurs="0" />
 			<xs:element name="dri_recordListMember" type="itemsType"
 				minOccurs="0"/>
+			<xs:element name="dct_coverage" type="stringType" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="href" type="xs:anyURI" />
 	</xs:complexType>
