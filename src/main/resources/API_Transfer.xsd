@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    targetNamespace="http://nationalarchives.gov.uk/dri/catalogue/api/transfer"
+    xmlns="http://nationalarchives.gov.uk/dri/catalogue/api/transfer"
+    xmlns:api="http://nationalarchives.gov.uk/dri/catalogue/api"
+    jaxb:version="2.0">
+    
+    <xs:import namespace="http://nationalarchives.gov.uk/dri/catalogue/api" schemaLocation="API_common.xsd"/>    
+    
+    <xs:annotation>
+        <xs:appinfo>
+            <jaxb:schemaBindings>
+                <jaxb:package name="uk.gov.nationalarchives.dri.catalogue.api.transfer"/>
+            </jaxb:schemaBindings>
+        </xs:appinfo>
+    </xs:annotation>
+    
+    <xs:complexType name="transferType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="assetId" type="api:uuidType" minOccurs="0"/>
+            <xs:element name="status" type="status"/>
+            <xs:element name="description" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>    
+    
+    <xs:simpleType name="status">
+        <xs:union memberTypes="transferStatus transferAssetStatus"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="transferStatus">
+        <xs:restriction base="xs:NCName">
+            <xs:enumeration value="Starting"/>
+            <xs:enumeration value="Transforming"/>
+            <xs:enumeration value="Transferring"/>
+            <xs:enumeration value="Completed"/>
+            <xs:enumeration value="Failed"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="transferAssetStatus">
+        <xs:restriction base="xs:NCName">
+            <xs:enumeration value="Sending"/>
+            <xs:enumeration value="Sent"/>
+            <xs:enumeration value="SendError"/>
+            <xs:enumeration value="ReceiveError"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:element name="transfer" type="transferType"/>
+    
+</xs:schema>

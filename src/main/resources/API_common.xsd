@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://nationalarchives.gov.uk/dri/catalogue/api"
+    xmlns="http://nationalarchives.gov.uk/dri/catalogue/api">
+    
+    <xs:simpleType name="uuidType">
+        <xs:annotation>
+            <xs:documentation>v4 UUID</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>

@@ -4,7 +4,10 @@
     elementFormDefault="qualified"
     xmlns="http://nationalarchives.gov.uk/dri/closure"
     xmlns:c="http://nationalarchives.gov.uk/dri/closure"
+    xmlns:api="http://nationalarchives.gov.uk/dri/catalogue/api"
     targetNamespace="http://nationalarchives.gov.uk/dri/closure">
+    
+    <xs:import namespace="http://nationalarchives.gov.uk/dri/catalogue/api" schemaLocation="API_common.xsd"/>
     
     <xs:element name="closures" type="closuresType">
         <xs:unique name="closureUUIDKey">
@@ -55,16 +58,7 @@
         </xs:sequence>
     </xs:complexType>
     
-     <xs:element name="uuid" type="uuidType"/>
-    
-    <xs:simpleType name="uuidType">
-        <xs:annotation>
-            <xs:documentation>v4 UUID</xs:documentation>
-        </xs:annotation>
-        <xs:restriction base="xs:string">
-            <xs:pattern value="[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}"/>
-        </xs:restriction>
-    </xs:simpleType>
+     <xs:element name="uuid" type="api:uuidType"/>
     
     <xs:simpleType name="closureStatusType">
         <xs:restriction base="xs:string">
