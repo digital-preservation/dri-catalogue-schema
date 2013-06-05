@@ -45,6 +45,8 @@
             <xs:enumeration value="Sent"/>
             <xs:enumeration value="SendError"/>
             <xs:enumeration value="ReceiveError"/>
+            <xs:enumeration value="DiscoveryProcessed"/>
+            <xs:enumeration value="DiscoveryFailed"/>
         </xs:restriction>
     </xs:simpleType>
     
