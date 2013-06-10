@@ -20,6 +20,7 @@
         <xs:sequence>
             <xs:element name="id" type="xs:string"/>
             <xs:element name="assetId" type="api:uuidType" minOccurs="0"/>
+            <xs:element name="timestamp" type="xs:dateTime"/>
             <xs:element name="status" type="status"/>
             <xs:element name="description" type="xs:string" minOccurs="0"/>
         </xs:sequence>
@@ -33,6 +34,8 @@
         <xs:restriction base="xs:NCName">
             <xs:enumeration value="Starting"/>
             <xs:enumeration value="Transforming"/>
+            <xs:enumeration value="Validating"/>
+            <xs:enumeration value="ValidatingRules"/>
             <xs:enumeration value="Transferring"/>
             <xs:enumeration value="Completed"/>
             <xs:enumeration value="Failed"/>
