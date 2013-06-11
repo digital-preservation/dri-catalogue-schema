@@ -4,6 +4,7 @@
     targetNamespace="http://nationalarchives.gov.uk/dri/catalogue/api/transfer"
     xmlns="http://nationalarchives.gov.uk/dri/catalogue/api/transfer"
     xmlns:api="http://nationalarchives.gov.uk/dri/catalogue/api"
+    xmlns:dcterms="http://purl.org/dc/terms/"
     jaxb:version="2.0">
     
     <xs:import namespace="http://nationalarchives.gov.uk/dri/catalogue/api" schemaLocation="API_common.xsd"/>    
@@ -18,17 +19,44 @@
     
     <xs:complexType name="transferType">
         <xs:sequence>
-            <xs:element name="id" type="xs:string"/>
-            <xs:element name="assetId" type="api:uuidType" minOccurs="0"/>
+            <xs:element ref="id"/>
             <xs:element name="timestamp" type="xs:dateTime"/>
-            <xs:element name="status" type="status"/>
-            <xs:element name="description" type="xs:string" minOccurs="0"/>
+            <xs:choice>
+                <xs:element ref="asset"/>
+                <xs:sequence>
+                    <xs:element name="status" type="transferStatus"/>
+                    <xs:element ref="description" minOccurs="0"/>        
+                </xs:sequence>
+            </xs:choice>
         </xs:sequence>
     </xs:complexType>    
     
-    <xs:simpleType name="status">
+    <xs:element name="id" type="xs:string"/>
+    
+    <xs:element name="asset" type="assetType"/>
+    
+    <xs:complexType name="assetType">
+        <xs:sequence>
+            <xs:element ref="id"/>
+            <xs:element name="status" type="transferAssetStatus"/>
+            <xs:element name="substitutes" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="isFormatOf" type="xs:string"/>
+                        <xs:element name="format" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element ref="description" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    <xs:element name="description" type="xs:string"/>
+    
+    <!-- xs:simpleType name="status">
         <xs:union memberTypes="transferStatus transferAssetStatus"/>
-    </xs:simpleType>
+    </xs:simpleType -->
     
     <xs:simpleType name="transferStatus">
         <xs:restriction base="xs:NCName">
@@ -54,5 +82,20 @@
     </xs:simpleType>
     
     <xs:element name="transfer" type="transferType"/>
+    
+    <xs:element name="processed-transfer" type="processedTransferType"/>
+        
+    <xs:complexType name="processedTransferType">
+        <xs:sequence>
+            <xs:element ref="id"/>
+            <xs:element name="asset" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="id"/>        
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
     
 </xs:schema>
