@@ -58,7 +58,7 @@
         </xs:sequence>
     </xs:complexType>
     
-     <xs:element name="uuid" type="api:uuidType"/>
+     <xs:element name="uuid" type="api:simpleUuidType"/>
     
     <xs:simpleType name="closureStatusType">
         <xs:restriction base="xs:string">
