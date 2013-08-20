@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    targetNamespace="http://nationalarchives.gov.uk/dri/catalogue/api/jms"
+    xmlns="http://nationalarchives.gov.uk/dri/catalogue/api/jms"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    
+    <xs:element name="message">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="function"/>
+            </xs:sequence>
+        </xs:complexType>    
+    </xs:element>
+    
+    <xs:element name="function">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:ID"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="parameter">
+        <xs:complexType>
+            <xs:choice>
+                <xs:sequence>
+                    <xs:element name="literal"/>
+                </xs:sequence>
+                <xs:any namespace="http://nationalarchives.gov.uk/dri/closure" processContents="lax"/>
+            </xs:choice>
+            <xs:attribute name="name" type="xs:ID"/>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>
