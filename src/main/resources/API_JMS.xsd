@@ -25,7 +25,7 @@
         <xs:complexType>
             <xs:choice>
                 <xs:sequence>
-                    <xs:element name="literal"/>
+                    <xs:element name="literal" type="xs:string"/>
                 </xs:sequence>
                 <xs:any namespace="http://nationalarchives.gov.uk/dri/closure" processContents="lax"/>
             </xs:choice>
