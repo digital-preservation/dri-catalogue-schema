@@ -89,7 +89,7 @@
     </xs:simpleType>
     
     <xs:simpleType name="openingDateType">
-        <xs:restriction base="xs:date"/>
+        <xs:restriction base="xs:dateTime"/>
     </xs:simpleType>
     
     <xs:simpleType name="authorType">
