@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    xmlns="http://nationalarchives.gov.uk/dri/preingest/whitelist"
+    xmlns:api="http://nationalarchives.gov.uk/dri/catalogue/api"
+    targetNamespace="http://nationalarchives.gov.uk/dri/preingest/whitelist">
+    
+    <xs:element name="whitelist">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="puid" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="puid" type="puidType">
+        <xs:annotation>
+            <xs:documentation>PRONOM Unique Identifier</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <xs:simpleType name="puidType">
+        <xs:restriction base="xs:anyURI">
+            <xs:pattern value="info:pronom/.*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>

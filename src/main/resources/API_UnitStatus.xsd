@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns="http://nationalarchives.gov.uk/dri/preingest/unitStatus"
+    xmlns:api="http://nationalarchives.gov.uk/dri/catalogue/api"
+    targetNamespace="http://nationalarchives.gov.uk/dri/preingest/unitStatus">
+
+    <xs:element name="unitStatus">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="LOADED"/>
+                <xs:enumeration value="PRE-INGESTING"/>
+                <xs:enumeration value="PRE-INGEST FAILED"/>
+                <xs:enumeration value="PRE-INGESTED"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+</xs:schema>

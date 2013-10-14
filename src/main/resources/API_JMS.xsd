@@ -6,9 +6,10 @@
     
     <xs:element name="message">
         <xs:complexType>
-            <xs:sequence>
+            <xs:choice>
                 <xs:element ref="function"/>
-            </xs:sequence>
+                <xs:element ref="functionResult"/>
+            </xs:choice>
         </xs:complexType>    
     </xs:element>
     
@@ -27,9 +28,28 @@
                 <xs:sequence>
                     <xs:element name="literal" type="xs:string"/>
                 </xs:sequence>
-                <xs:any namespace="http://nationalarchives.gov.uk/dri/closure" processContents="lax"/>
+                <xs:any namespace="http://nationalarchives.gov.uk/dri/closure" processContents="lax"/> <!-- TODO allow more than just closure -->
             </xs:choice>
             <xs:attribute name="name" type="xs:ID"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="functionResult">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="exception"/>
+                <xs:element ref="result"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="exception" type="xs:string"/>
+    
+    <xs:element name="result">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:any processContents="lax"/>
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
     
