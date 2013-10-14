@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns="http://nationalarchives.gov.uk/dri/preingest"
+    xmlns:api="http://nationalarchives.gov.uk/dri/catalogue/api"
+    targetNamespace="http://nationalarchives.gov.uk/dri/preingest">
+    
+    <xs:simpleType name="unitStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LOADED"/>
+            <xs:enumeration value="PRE-INGESTING"/>
+            <xs:enumeration value="PRE-INGEST FAILED"/>
+            <xs:enumeration value="PRE-INGESTED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="mapEntryType">
+        <xs:sequence>
+            <xs:element name="csvFilename" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="csvSchemaPath" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="puidType">
+        <xs:restriction base="xs:anyURI">
+            <xs:pattern value="info:pronom/.*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:element name="metadataMap">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mapEntry" type="mapEntryType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="puid" type="puidType">
+        <xs:annotation>
+            <xs:documentation>PRONOM Unique Identifier</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+        
+    <xs:element name="whitelist">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="puid" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>
+
