@@ -6,10 +6,11 @@
     
     <xs:simpleType name="unitStatus">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="LOADED"/>
-            <xs:enumeration value="PRE-INGESTING"/>
-            <xs:enumeration value="PRE-INGEST FAILED"/>
-            <xs:enumeration value="PRE-INGESTED"/>
+            <xs:enumeration value="Identified"/>
+            <xs:enumeration value="Loaded"/>
+            <xs:enumeration value="PreIngesting"/>
+            <xs:enumeration value="PreIngestFailed"/>
+            <xs:enumeration value="PreIngested"/>
         </xs:restriction>
     </xs:simpleType>
     
