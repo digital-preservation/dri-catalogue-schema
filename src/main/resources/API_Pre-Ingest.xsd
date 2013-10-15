@@ -14,10 +14,20 @@
         </xs:restriction>
     </xs:simpleType>
     
+    <xs:simpleType name="partStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Identified"/>
+            <xs:enumeration value="Loaded"/>
+            <xs:enumeration value="PreIngesting"/>
+            <xs:enumeration value="PreIngestFailed"/>
+            <xs:enumeration value="PreIngested"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
     <xs:complexType name="mapEntryType">
         <xs:sequence>
-            <xs:element name="csvFilename" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="csvSchemaPath" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="csvFilename" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            <xs:element name="csvSchemaPath" minOccurs="1" maxOccurs="1" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -47,6 +57,15 @@
                 <xs:element ref="puid" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="partId">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="unitId" minOccurs="1" maxOccurs="1" type="xs:string"/>
+                <xs:element name="series" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>        
     </xs:element>
     
 </xs:schema>
