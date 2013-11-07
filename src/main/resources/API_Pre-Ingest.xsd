@@ -67,5 +67,15 @@
         </xs:complexType>        
     </xs:element>
     
+    <xs:element name="sipData">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="collectionName" minOccurs="1" maxOccurs="1" type="xs:string"/>
+                <xs:element name="collectionCode" minOccurs="1" maxOccurs="1" type="xs:string"/>
+                <xs:element name="bornDigital" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
 </xs:schema>
 
