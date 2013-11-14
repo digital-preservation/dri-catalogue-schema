@@ -26,7 +26,7 @@
     <xs:complexType name="mapEntryType">
         <xs:sequence>
             <xs:element name="csvFilename" minOccurs="1" maxOccurs="1" type="xs:string"/>
-            <xs:element name="csvSchemaPath" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            <xs:element name="csvSchemaFilename" minOccurs="1" maxOccurs="1" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
     
