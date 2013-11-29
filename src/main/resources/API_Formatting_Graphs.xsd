@@ -116,9 +116,9 @@
 
 	<xs:complexType name="itemType">
 		<xs:sequence>
-			<xs:element name="dct_created" type="dateTimeType"
+			<xs:element name="created" type="dateTimeType"
 				minOccurs="0" />
-			<xs:element name="dct_identifier" type="stringType"
+			<xs:element name="identifier" type="stringType"
 				minOccurs="0" />
 			<xs:element name="dri_batch" type="referenceType"
 				minOccurs="0" />
@@ -133,7 +133,7 @@
 				minOccurs="0" />
 			<xs:element name="dri_parent" type="referenceType"
 				minOccurs="0" />
-			<xs:element name="dct_description" type="stringNCNameType"
+			<xs:element name="description" type="stringNCNameType"
 				minOccurs="0" />
 			<xs:element name="username" type="stringType"
 				minOccurs="0" />
@@ -167,7 +167,7 @@
 
 	<xs:complexType name="primaryTopicType">
 		<xs:sequence>
-			<xs:element name="dct_created" type="dateTimeType"
+			<xs:element name="created" type="dateTimeType"
 				minOccurs="0" />
 			<xs:element name="dri_exportStatus" type="referenceType"
 				minOccurs="0" />
@@ -175,7 +175,7 @@
 				minOccurs="0" />
 			<xs:element name="dri_closure" type="dri_closureType"
 				minOccurs="0" />
-			<xs:element name="dct_identifier" type="stringType"
+			<xs:element name="identifier" type="stringType"
 				minOccurs="0" />
 			<xs:element name="isPrimaryTopicOf" type="hrefType"
 				minOccurs="0" />
@@ -186,7 +186,7 @@
 				minOccurs="0" />
 			<xs:element name="dri_recordListMember" type="itemsType"
 				minOccurs="0"/>
-			<xs:element name="dct_coverage" type="stringType" minOccurs="0"/>
+			<xs:element name="coverage" type="stringType" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="href" type="xs:anyURI" />
 	</xs:complexType>
