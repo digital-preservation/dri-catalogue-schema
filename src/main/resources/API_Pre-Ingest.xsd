@@ -50,7 +50,7 @@
         </xs:sequence>
     </xs:complexType>
     
-    <xs:element name="CatalogueMap" type="catalogueMapType"/>
+    <xs:element name="catalogueMap" type="catalogueMapType"/>
     
     <xs:element name="puid" type="puidType">
         <xs:annotation>
