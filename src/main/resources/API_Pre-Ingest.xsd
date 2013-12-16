@@ -50,38 +50,41 @@
         </xs:sequence>
     </xs:complexType>
     
-    <xs:element name="catalogueMap" type="catalogueMapType"/>
-    
     <xs:element name="puid" type="puidType">
         <xs:annotation>
             <xs:documentation>PRONOM Unique Identifier</xs:documentation>
         </xs:annotation>
     </xs:element>
         
-    <xs:element name="whitelist">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="puid" minOccurs="0" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    <xs:complexType name="whitelistType">
+        <xs:sequence>
+            <xs:element ref="puid" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
     
-    <xs:element name="partId">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="unitId" minOccurs="1" maxOccurs="1" type="xs:string"/>
-                <xs:element name="series" minOccurs="1" maxOccurs="1" type="xs:string"/>
-            </xs:sequence>
-        </xs:complexType>        
-    </xs:element>
+    <xs:complexType name="partIdType">
+        <xs:sequence>
+            <xs:element name="unitId" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            <xs:element name="series" minOccurs="1" maxOccurs="1" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>        
     
-    <xs:element name="sipData">
+    <xs:complexType name="sipDataType">
+        <xs:sequence>
+            <xs:element name="collectionName" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            <xs:element name="collectionCode" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            <xs:element name="bornDigital" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:element name="queryResult">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="collectionName" minOccurs="1" maxOccurs="1" type="xs:string"/>
-                <xs:element name="collectionCode" minOccurs="1" maxOccurs="1" type="xs:string"/>
-                <xs:element name="bornDigital" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
-            </xs:sequence>
+                <xs:element name="partId" minOccurs="0" maxOccurs="1" type="partIdType"/>
+                <xs:element name="whitelist" minOccurs="0" maxOccurs="1" type="whitelistType"/>
+                <xs:element name="sipData" minOccurs="0" maxOccurs="1" type="sipDataType"/>
+                <xs:element name="catalogueMap" minOccurs="0" maxOccurs="1" type="catalogueMapType"/>
+            </xs:sequence>            
         </xs:complexType>
     </xs:element>
     
