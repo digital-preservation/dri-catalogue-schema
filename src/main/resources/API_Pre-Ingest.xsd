@@ -77,7 +77,7 @@
         </xs:sequence>
     </xs:complexType>
     
-    <xs:element name="Query">
+    <xs:element name="query">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="partId" minOccurs="1" maxOccurs="1" type="partIdType"/>
