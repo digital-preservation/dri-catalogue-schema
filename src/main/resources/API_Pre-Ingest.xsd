@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    xmlns="http://nationalarchives.gov.uk/dri/preingest"
-    targetNamespace="http://nationalarchives.gov.uk/dri/preingest">
+    xmlns="http://nationalarchives.gov.uk/dri/ingest"
+    targetNamespace="http://nationalarchives.gov.uk/dri/ingest">
     
     <xs:simpleType name="unitStatus">
         <xs:restriction base="xs:string">
@@ -10,6 +10,9 @@
             <xs:enumeration value="PreIngesting"/>
             <xs:enumeration value="PreIngestFailed"/>
             <xs:enumeration value="PreIngested"/>
+            <xs:enumeration value="Ingesting"/>
+            <xs:enumeration value="IngestFailed"/>
+            <xs:enumeration value="Ingested"/>
         </xs:restriction>
     </xs:simpleType>
     
@@ -20,6 +23,9 @@
             <xs:enumeration value="PreIngesting"/>
             <xs:enumeration value="PreIngestFailed"/>
             <xs:enumeration value="PreIngested"/>
+            <xs:enumeration value="Ingesting"/>
+            <xs:enumeration value="IngestFailed"/>
+            <xs:enumeration value="Ingested"/>
         </xs:restriction>
     </xs:simpleType>
     
