@@ -20,4 +20,25 @@
         </xs:simpleContent>
     </xs:complexType>
     
+    <xs:complexType name="catalogueMapType">
+        <xs:sequence>
+            <xs:element name="simpleMapEntry" type="simpleMapEntryType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="complexMapEntry" type="complexMapEntryType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="simpleMapEntryType">
+        <xs:sequence>
+            <xs:element name="mapKey" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            <xs:element name="mapValue" minOccurs="1" maxOccurs="1" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="complexMapEntryType">
+        <xs:sequence>
+            <xs:element name="mapKey" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            <xs:element name="mapValue" minOccurs="1" maxOccurs="1" type="catalogueMapType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
 </xs:schema>

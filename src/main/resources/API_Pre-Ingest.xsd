@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     xmlns="http://nationalarchives.gov.uk/dri/ingest"
+    xmlns:api="http://nationalarchives.gov.uk/dri/catalogue/api"
     targetNamespace="http://nationalarchives.gov.uk/dri/ingest">
+    
+    <xs:import namespace="http://nationalarchives.gov.uk/dri/catalogue/api" schemaLocation="API_common.xsd"/>
     
     <xs:simpleType name="unitStatus">
         <xs:restriction base="xs:string">
@@ -29,32 +32,11 @@
         </xs:restriction>
     </xs:simpleType>
     
-    <xs:complexType name="simpleMapEntryType">
-        <xs:sequence>
-            <xs:element name="mapKey" minOccurs="1" maxOccurs="1" type="xs:string"/>
-            <xs:element name="mapValue" minOccurs="1" maxOccurs="1" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    
-    <xs:complexType name="complexMapEntryType">
-        <xs:sequence>
-            <xs:element name="mapKey" minOccurs="1" maxOccurs="1" type="xs:string"/>
-            <xs:element name="mapValue" minOccurs="1" maxOccurs="1" type="catalogueMapType"/>
-        </xs:sequence>
-    </xs:complexType>
-    
     <xs:simpleType name="puidType">
         <xs:restriction base="xs:anyURI">
             <xs:pattern value="info:pronom/.*"/>
         </xs:restriction>
     </xs:simpleType>
-    
-    <xs:complexType name="catalogueMapType">
-        <xs:sequence>
-            <xs:element name="simpleMapEntry" type="simpleMapEntryType" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="complexMapEntry" type="complexMapEntryType" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
     
     <xs:element name="puid" type="puidType">
         <xs:annotation>
@@ -97,7 +79,7 @@
                 <xs:element name="partId" minOccurs="0" maxOccurs="1" type="partIdType"/>
                 <xs:element name="whitelist" minOccurs="0" maxOccurs="1" type="whitelistType"/>
                 <xs:element name="sipData" minOccurs="0" maxOccurs="1" type="sipDataType"/>
-                <xs:element name="catalogueMap" minOccurs="0" maxOccurs="1" type="catalogueMapType"/>
+                <xs:element name="catalogueMap" minOccurs="0" maxOccurs="1" type="api:catalogueMapType"/>
             </xs:sequence>            
         </xs:complexType>
     </xs:element>

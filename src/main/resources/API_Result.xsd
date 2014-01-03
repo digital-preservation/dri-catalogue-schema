@@ -18,6 +18,7 @@
     <xs:complexType name="apiResultType">
         <xs:sequence>
             <xs:element name="uuid" type="complexUuidType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="map" type="catalogueMapType" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>    
     
