@@ -65,24 +65,24 @@
         </xs:sequence>
     </xs:complexType>
     
-    <xs:element name="query">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="partId" minOccurs="1" maxOccurs="1" type="partIdType"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    <xs:complexType name="queryResultType">
+        <xs:sequence>
+            <xs:element name="partId" minOccurs="0" maxOccurs="1" type="partIdType"/>
+            <xs:element name="whitelist" minOccurs="0" maxOccurs="1" type="whitelistType"/>
+            <xs:element name="sipData" minOccurs="0" maxOccurs="1" type="sipDataType"/>
+            <xs:element name="catalogueMap" minOccurs="0" maxOccurs="1" type="api:catalogueMapType"/>
+        </xs:sequence>            
+    </xs:complexType>
     
-    <xs:element name="queryResult">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="partId" minOccurs="0" maxOccurs="1" type="partIdType"/>
-                <xs:element name="whitelist" minOccurs="0" maxOccurs="1" type="whitelistType"/>
-                <xs:element name="sipData" minOccurs="0" maxOccurs="1" type="sipDataType"/>
-                <xs:element name="catalogueMap" minOccurs="0" maxOccurs="1" type="api:catalogueMapType"/>
-            </xs:sequence>            
-        </xs:complexType>
-    </xs:element>
+    <xs:complexType name="queryType">
+        <xs:sequence>
+            <xs:element name="partId" minOccurs="1" maxOccurs="1" type="partIdType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:element name="query" type="queryType"/>
+    
+    <xs:element name="queryResult" type="queryResultType"/>
     
 </xs:schema>
 

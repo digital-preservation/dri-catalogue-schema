@@ -1,51 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    elementFormDefault="qualified"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     xmlns="http://nationalarchives.gov.uk/dri/closure"
     xmlns:c="http://nationalarchives.gov.uk/dri/closure"
     xmlns:api="http://nationalarchives.gov.uk/dri/catalogue/api"
     targetNamespace="http://nationalarchives.gov.uk/dri/closure">
-    
-    <xs:import namespace="http://nationalarchives.gov.uk/dri/catalogue/api" schemaLocation="API_common.xsd"/>
-    
+
+    <xs:import namespace="http://nationalarchives.gov.uk/dri/catalogue/api"
+        schemaLocation="API_common.xsd"/>
+
     <xs:element name="closures" type="closuresType">
         <xs:unique name="closureUUIDKey">
             <xs:selector xpath="c:closure"/>
-            <xs:field xpath="c:uuid" />
+            <xs:field xpath="c:uuid"/>
         </xs:unique>
     </xs:element>
-    
+
     <xs:complexType name="closuresType">
         <xs:sequence>
-        	<xs:choice>
-            	<xs:element ref="closure" maxOccurs="unbounded"/>
-            	<xs:element ref="query"/>
+            <xs:choice>
+                <xs:element ref="closure" maxOccurs="unbounded"/>
+                <xs:element ref="closureQuery"/>
             </xs:choice>
         </xs:sequence>
-    </xs:complexType>    
-    
-    <xs:element name="query" type="queryType">
+    </xs:complexType>
+
+    <xs:element name="closureQuery" type="closureQueryType">
         <xs:unique name="queryClosureUUIDKey">
             <xs:selector xpath="c:closure"/>
-            <xs:field xpath="c:uuid" />
+            <xs:field xpath="c:uuid"/>
         </xs:unique>
     </xs:element>
-   
-   <xs:complexType name="queryType">
-   	<xs:sequence>
-   		<xs:element name="closure" type="closureQueryType" maxOccurs="unbounded"/>
-   	</xs:sequence>
-   </xs:complexType>
-    
-  <xs:complexType name="closureQueryType">
-  	<xs:sequence>
-  		<xs:element ref="uuid"/>
-  	</xs:sequence>
-  </xs:complexType>  
-    
-   <xs:element name="closure" type="closureType"/>
-    
+
+    <xs:complexType name="closureQueryType">
+        <xs:sequence>
+            <xs:element name="closure" type="uuidType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="uuidType">
+        <xs:sequence>
+            <xs:element ref="uuid"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="closure" type="closureType"/>
+
     <xs:complexType name="closureType">
         <xs:sequence>
             <xs:element ref="uuid"/>
@@ -57,16 +56,16 @@
             <xs:element name="author" type="authorType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
-    
-     <xs:element name="uuid" type="api:simpleUuidType"/>
-    
+
+    <xs:element name="uuid" type="api:simpleUuidType"/>
+
     <xs:simpleType name="closureStatusType">
         <xs:restriction base="xs:string">
             <xs:enumeration value="OPEN"/>
             <xs:enumeration value="CLOSED"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:simpleType name="closureTypeType">
         <xs:restriction base="xs:positiveInteger">
             <xs:enumeration value="1">
@@ -81,17 +80,17 @@
             </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:simpleType name="closureCodeType">
         <xs:restriction base="xs:nonNegativeInteger">
             <xs:totalDigits value="4"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:simpleType name="openingDateType">
         <xs:restriction base="xs:dateTime"/>
     </xs:simpleType>
-    
+
     <xs:simpleType name="authorType">
         <xs:restriction base="xs:string"/>
     </xs:simpleType>
