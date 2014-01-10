@@ -51,7 +51,7 @@
                 <xs:sequence>
                     <xs:element name="enumValue" type="xs:string"/>
                 </xs:sequence>
-                <xs:any  namespace="http://nationalarchives.gov.uk/dri/closure http://nationalarchives.gov.uk/dri/preingest" processContents="lax"/>
+                <xs:any  namespace="http://nationalarchives.gov.uk/dri/closure http://nationalarchives.gov.uk/dri/ingest" processContents="lax"/>
             </xs:choice>
         </xs:complexType>
     </xs:element>
