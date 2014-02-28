@@ -19,6 +19,7 @@
         <xs:sequence>
             <xs:element name="uuid" type="complexUuidType" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="map" type="catalogueMapType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="generatedCatalogueReference" type="generatedCatalogueReferenceType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>    
     

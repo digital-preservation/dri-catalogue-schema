@@ -41,4 +41,35 @@
         </xs:sequence>
     </xs:complexType>
     
+    <xs:complexType name="generatedCatalogueReferenceType">
+        <xs:sequence>
+            <xs:element name="department" type="departmentType"/>
+            <xs:element name="series" type="seriesType"/>
+            <xs:element name="recordNumber" type="gcrBase25Type"/>
+            <xs:element name="revision" minOccurs="0" type="revisionNumberType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="departmentType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="seriesType">
+        <xs:restriction base="xs:positiveInteger"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="gcrBase25Type">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([B-D][F-H][J-N][P-T][V-X][2-7])+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="revisionNumberType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:minInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
 </xs:schema>
