@@ -54,6 +54,9 @@
             <xs:element name="closureCode" type="closureCodeType"/>
             <xs:element name="openingDate" type="openingDateType"/>
             <xs:element name="author" type="authorType" minOccurs="0"/>
+            <xs:element name="exemptionCode" type="exemptionCodeType"/>
+            <xs:element name="exemptionAsserted" type="exemptionAssertedType"/>
+            <xs:element name="descriptionAlternate" type="descriptionAlternateType" minOccurs="0"/>            
         </xs:sequence>
     </xs:complexType>
 
@@ -67,17 +70,109 @@
     </xs:simpleType>
 
     <xs:simpleType name="closureTypeType">
-        <xs:restriction base="xs:positiveInteger">
-            <xs:enumeration value="1">
-                <xs:annotation>
-                    <xs:documentation>Open on Transfer</xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="2">
-                <xs:annotation>
-                    <xs:documentation>Closed Until</xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
+        <xs:annotation>
+            <xs:documentation>This type records, in code form, the type of closure of an entity (e.g. deliverable unit).
+                The meaning of these codes is as follows:
+                A - open on transfer
+                C	Closed, for review in
+                D - retained until
+                F - closed for
+                I - open immediately
+                N - normal closure
+                R - retained by department
+                S - retained by department under section 3.4
+                T - temporarily retained by department
+                U - closed until
+                V	Closed whilst access is reviewed
+                W	Reclosed in
+                X - unknown/unspecified</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="N"/>
+            <xs:enumeration value="R"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="T"/>
+            <xs:enumeration value="U"/>
+            <xs:enumeration value="V"/>
+            <xs:enumeration value="W"/>
+            <xs:enumeration value="X"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="exemptionCodeType">
+        <xs:annotation>
+            <xs:documentation>
+                Freedom of Information Act 2000 - Exemption Codes: 
+                23 - Information supplied by, or relating to, bodies dealing with security matters
+                24 - National security
+                26 - Defence
+                27(1) - International Relations - prejudice
+                27(2) - International Relations - Information Provided in Confidence
+                28 - Relations within the UK
+                29 - The Economy
+                30(1) - Criminal Investigations and proceedings
+                30(2) - Relating to civil or criminal investigations and proceedings which use confidential sources
+                31 - Law enforcement
+                32 - Court Records
+                33 - Audit Functions
+                34 - Parliamentary privilege
+                35(1)(a) - Formulation of Government Policy
+                35(1)(b) - Ministerial communications
+                35(1)(c) - Law Officer's advice
+                35(1)(d) - Operation of Ministerial Private Office
+                36 - Prejudice of effective conduct of public affairs
+                37(1)(a) - Communications with the Sovereign
+                37(1)(a)old - Communications with Royal Family and Household (pre 2010 CRAG amendment)
+                37(1)(aa) - Communications with the heir or second in line of succession to the throne
+                37(1)(ac) - Communications with other members of the Royal Family
+                37(1)(ad) - Communications with the Royal Household
+                37(1)(b) - Honours
+                38 - Health and Safety
+                39 - Environmental Information
+                40(2) - Personal information where the applicant is a 3rd party
+                41 - Information provided in confidence
+                42 - Legal Professional privilege
+                43 - Commercial Interests
+                44 - Prohibitions on disclosure 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="section_23"/>
+            <xs:enumeration value="section_24"/>
+            <xs:enumeration value="section_26"/>
+            <xs:enumeration value="section_27_1"/>
+            <xs:enumeration value="section_27_2"/>
+            <xs:enumeration value="section_28"/>
+            <xs:enumeration value="section_29"/>
+            <xs:enumeration value="section_30_1"/>
+            <xs:enumeration value="section_30_2"/>
+            <xs:enumeration value="section_31"/>
+            <xs:enumeration value="section_32"/>
+            <xs:enumeration value="section_33"/>
+            <xs:enumeration value="section_34"/>
+            <xs:enumeration value="section_35_1_a"/>
+            <xs:enumeration value="section_35_1_b"/>
+            <xs:enumeration value="section_35_1_c"/>
+            <xs:enumeration value="section_35_1_d"/>
+            <xs:enumeration value="section_36"/>
+            <xs:enumeration value="section_37_1_a"/>
+            <xs:enumeration value="section_37_1_a_old"/>
+            <xs:enumeration value="section_37_1_aa"/>
+            <xs:enumeration value="section_37_1_ac"/>
+            <xs:enumeration value="section_37_1_ad"/>
+            <xs:enumeration value="section_37_1_b"/>
+            <xs:enumeration value="section_38"/>
+            <xs:enumeration value="section_39"/>
+            <xs:enumeration value="section_40_2"/>
+            <xs:enumeration value="section_41"/>
+            <xs:enumeration value="section_42"/>
+            <xs:enumeration value="section_43"/>
+            <xs:enumeration value="section_44"/>
         </xs:restriction>
     </xs:simpleType>
 
@@ -94,4 +189,13 @@
     <xs:simpleType name="authorType">
         <xs:restriction base="xs:string"/>
     </xs:simpleType>
+    
+    <xs:simpleType name="descriptionAlternateType">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="exemptionAssertedType">
+        <xs:restriction base="xs:integer"/>
+    </xs:simpleType>    
+    
 </xs:schema>

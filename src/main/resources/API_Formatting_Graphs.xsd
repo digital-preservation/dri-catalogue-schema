@@ -161,6 +161,9 @@
 			<xs:element name="dri_descriptionStatus" type="integerType" />
 			<xs:element name="dri_documentStatus" type="integerType" />
 			<xs:element name="dri_reviewDate" type="dateTimeType" />
+			<xs:element name="dri_exemptionCode" type="referenceType"/>
+			<xs:element name="dri_exemptionAsserted" type="integerType"/>
+			<xs:element name="alternative" type="stringType" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" />
 	</xs:complexType>
@@ -192,5 +195,11 @@
 	</xs:complexType>
 
 	<xs:element name="result" type="resultType" />
+	
+	<xs:simpleType name="exemptionAssertedType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="^\d{4}$"/>    
+		</xs:restriction>
+	</xs:simpleType>
 
 </xs:schema>
