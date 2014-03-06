@@ -214,9 +214,27 @@
         </xs:restriction>
     </xs:simpleType>
 
+
     <xs:simpleType name="closureCodeType">
+        <xs:union memberTypes="closureCodeYearType closureCodeYearPeriodType closureCodeEmptyType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="closureCodeYearType">
         <xs:restriction base="xs:nonNegativeInteger">
             <xs:totalDigits value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="closureCodeYearPeriodType">
+        <xs:restriction base="xs:nonNegativeInteger">
+            <xs:minInclusive value="0"/>
+            <xs:maxExclusive value="999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="closureCodeEmptyType">
+        <xs:restriction base="xs:string">
+            <xs:length value="0"/>
         </xs:restriction>
     </xs:simpleType>
 
