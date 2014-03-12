@@ -52,13 +52,22 @@
             <xs:element name="descriptionClosureStatus" type="closureStatusType"/>
             <xs:element name="closureType" type="closureTypeType"/>
             <xs:element name="closureCode" type="closureCodeType"/>
+            <xs:element name="closurePeriod" type="closurePeriodType"/>
             <xs:element name="openingDate" type="openingDateType"/>
             <xs:element name="author" type="authorType" minOccurs="0"/>
-            <xs:element name="exemptionCode" type="exemptionCodeType"/>
-            <xs:element name="exemptionAsserted" type="exemptionAssertedType"/>
+            <xs:element name="exemptionCode" type="exemptionCodeType" minOccurs="0"/>
+            <xs:element name="exemptionAsserted" type="exemptionAssertedType" minOccurs="0"/>
             <xs:element name="descriptionAlternate" type="descriptionAlternateType" minOccurs="0"/>            
         </xs:sequence>
+        <xs:attribute name="resourceType" type="resourceTypeType" use="required"/>
     </xs:complexType>
+    
+    <xs:simpleType name="resourceTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DeliverableUnit"/>
+            <xs:enumeration value="File"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:element name="uuid" type="api:simpleUuidType"/>
 
@@ -252,6 +261,10 @@
     
     <xs:simpleType name="exemptionAssertedType">
         <xs:restriction base="xs:integer"/>
-    </xs:simpleType>    
+    </xs:simpleType>
+    
+    <xs:simpleType name="closurePeriodType">
+        <xs:restriction base="xs:integer"/>
+    </xs:simpleType>
     
 </xs:schema>
