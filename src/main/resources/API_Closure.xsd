@@ -55,7 +55,7 @@
             <xs:element name="closurePeriod" type="closurePeriodType"/>
             <xs:element name="openingDate" type="openingDateType"/>
             <xs:element name="author" type="authorType" minOccurs="0"/>
-            <xs:element name="exemptionCode" type="exemptionCodeType" minOccurs="0"/>
+            <xs:element name="exemptionCode" type="exemptionCodeType" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="exemptionAsserted" type="exemptionAssertedType" minOccurs="0"/>
             <xs:element name="descriptionAlternate" type="descriptionAlternateType" minOccurs="0"/>            
         </xs:sequence>
