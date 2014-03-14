@@ -161,8 +161,8 @@
 			<xs:element name="dri_descriptionStatus" type="integerType" />
 			<xs:element name="dri_documentStatus" type="integerType" />
 			<xs:element name="dri_reviewDate" type="dateTimeType" />
-			<xs:element name="dri_exemptionCode" type="referenceType"/>
-			<xs:element name="dri_exemptionAsserted" type="integerType"/>
+			<xs:element name="dri_exemptionCode" type="referenceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="dri_exemptionAsserted" type="integerType" minOccurs="0"/>
 			<xs:element name="alternative" type="stringType" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" />
