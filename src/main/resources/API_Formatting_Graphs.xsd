@@ -139,6 +139,8 @@
 				minOccurs="0" />
 			<xs:element name="dri_exportMember" type="itemsType"
 				minOccurs="0" />
+			<xs:element name="dri_recordListMember" type="itemsType"
+				minOccurs="0" />
 			<xs:element name="reference" type="itemReferenceType"
 				minOccurs="0" />
 			<xs:element name="type" type="itemsType" minOccurs="0" />
