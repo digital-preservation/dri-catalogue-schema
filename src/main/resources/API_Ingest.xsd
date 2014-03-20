@@ -59,6 +59,7 @@
     
     <xs:complexType name="sipDataType">
         <xs:sequence>
+            <xs:element name="identifier" type="api:simpleUuidType"/>
             <xs:element name="collectionName" minOccurs="1" maxOccurs="1" type="xs:string"/>
             <xs:element name="collectionCode" minOccurs="1" maxOccurs="1" type="xs:string"/>
             <xs:element name="bornDigital" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
@@ -67,6 +68,7 @@
     
     <xs:complexType name="queryResultType">
         <xs:sequence>
+            <!-- TODO should probably be xs:choice of these -->
             <xs:element name="partId" minOccurs="0" maxOccurs="1" type="partIdType"/>
             <xs:element name="whitelist" minOccurs="0" maxOccurs="1" type="whitelistType"/>
             <xs:element name="sipData" minOccurs="0" maxOccurs="1" type="sipDataType"/>
