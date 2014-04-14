@@ -4,7 +4,7 @@
     <parent>
         <groupId>uk.gov.tna.dri.catalogue</groupId>
         <artifactId>dri-catalogue-parent</artifactId>
-        <version>1.32-SNAPSHOT</version>
+        <version>1.32</version>
         <relativePath>../dri-catalogue-parent</relativePath>
     </parent>
     
