@@ -72,4 +72,8 @@
         </xs:restriction>
     </xs:simpleType>
     
+    <xs:simpleType name="labelType">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
 </xs:schema>
