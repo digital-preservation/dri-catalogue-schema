@@ -49,7 +49,13 @@
             <xs:element ref="puid" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-    
+
+    <xs:complexType name="unitIdType">
+        <xs:sequence>
+            <xs:element name="unitId" minOccurs="1" maxOccurs="1" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="partIdType">
         <xs:sequence>
             <xs:element name="unitId" minOccurs="1" maxOccurs="1" type="xs:string"/>
@@ -69,7 +75,7 @@
     <xs:complexType name="queryResultType">
         <xs:sequence>
             <!-- TODO should probably be xs:choice of these -->
-            <xs:element name="unitId" minOccurs="0" maxOccurs="1" type="xs:string"/>
+            <xs:element name="unitId" minOccurs="0" maxOccurs="1" type="unitIdType"/>
             <xs:element name="partId" minOccurs="0" maxOccurs="1" type="partIdType"/>
             <xs:element name="whitelist" minOccurs="0" maxOccurs="1" type="whitelistType"/>
             <xs:element name="sipData" minOccurs="0" maxOccurs="1" type="sipDataType"/>
@@ -83,7 +89,7 @@
         </xs:sequence>
         -->
         <xs:choice>
-            <xs:element name="unitId" type="xs:string"/>
+            <xs:element name="unitId" type="unitIdType"/>
             <xs:element name="partId" type="partIdType"/>
         </xs:choice>
     </xs:complexType>
