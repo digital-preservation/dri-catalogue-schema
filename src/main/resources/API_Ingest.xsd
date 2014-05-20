@@ -55,7 +55,7 @@
             <xs:element name="unitId" minOccurs="1" maxOccurs="1" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-
+    
     <xs:complexType name="partIdType">
         <xs:sequence>
             <xs:element name="unitId" minOccurs="1" maxOccurs="1" type="xs:string"/>
@@ -91,12 +91,28 @@
         <xs:choice>
             <xs:element name="unitId" type="unitIdType"/>
             <xs:element name="partId" type="partIdType"/>
+            <xs:element name="limit" type="xs:int"/>
         </xs:choice>
+    </xs:complexType>
+    
+    <xs:complexType name="driUnitsType">
+        <xs:sequence>
+            <xs:element name="units" type="driUnitType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="driUnitType">
+        <xs:sequence>
+            <xs:element name="label" type="xs:string"/>
+            <xs:element name="loaded" type="xs:dateTime"/>
+        </xs:sequence>
     </xs:complexType>
     
     <xs:element name="query" type="queryType"/>
     
     <xs:element name="queryResult" type="queryResultType"/>
+    
+    <xs:element name="driUnits" type="driUnitsType"/>
     
 </xs:schema>
 

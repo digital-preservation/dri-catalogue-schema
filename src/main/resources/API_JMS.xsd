@@ -28,7 +28,7 @@
                 <xs:sequence>
                     <xs:element name="literal" type="xs:string"/>
                 </xs:sequence>
-                <xs:any namespace="http://nationalarchives.gov.uk/dri/closure http://nationalarchives.gov.uk/dri/ingest" processContents="lax"/> <!-- TODO allow more than just closure -->
+                <xs:any namespace="http://nationalarchives.gov.uk/dri/catalogue/api http://nationalarchives.gov.uk/dri/closure http://nationalarchives.gov.uk/dri/ingest" processContents="lax"/> <!-- TODO allow more than just closure -->
             </xs:choice>
             <xs:attribute name="name" type="xs:ID"/>
         </xs:complexType>
