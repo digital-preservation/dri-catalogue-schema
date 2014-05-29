@@ -18,11 +18,13 @@
             <xs:enumeration value="Ingested"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:simpleType name="partStatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Identified"/>
-            <xs:enumeration value="Loaded"/>
+            <xs:enumeration value="LoadedPreingest"/>
+            <xs:enumeration value="LoadedHolding"/>
+            <xs:enumeration value="LoadedHoldingPlusSandbox"/>
             <xs:enumeration value="PreIngesting"/>
             <xs:enumeration value="PreIngestFailed"/>
             <xs:enumeration value="PreIngested"/>
@@ -84,10 +86,6 @@
     </xs:complexType>
     
     <xs:complexType name="queryType">
-        <!-- <xs:sequence>
-            <xs:element name="partId" minOccurs="1" maxOccurs="1" type="partIdType"/>
-        </xs:sequence>
-        -->
         <xs:choice>
             <xs:element name="unitId" type="unitIdType"/>
             <xs:element name="partId" type="partIdType"/>
@@ -100,7 +98,13 @@
             <xs:element name="units" type="driUnitType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-    
+
+    <xs:complexType name="driPartsType">
+        <xs:sequence>
+            <xs:element name="parts" type="partIdType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="driUnitType">
         <xs:sequence>
             <xs:element name="label" type="xs:string"/>
