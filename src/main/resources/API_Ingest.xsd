@@ -34,6 +34,21 @@
         </xs:restriction>
     </xs:simpleType>
     
+    <xs:simpleType name="mediaType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PGPZFile"/>
+            <xs:enumeration value="TrueCryptVolumeFile"/>
+            <xs:enumeration value="TARFile"/>
+            <xs:enumeration value="FileSystemFolder"/>
+            <xs:enumeration value="PortableNVRAM"/>
+            <xs:enumeration value="Tape"/>
+            <xs:enumeration value="HardDrive"/>
+            <xs:enumeration value="DVD"/>
+            <xs:enumeration value="FloppyDisk"/>
+            <xs:enumeration value="CD"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
     <xs:simpleType name="puidType">
         <xs:restriction base="xs:anyURI">
             <xs:pattern value="info:pronom/.*"/>
@@ -109,7 +124,7 @@
         <xs:sequence>
             <xs:element name="label" type="xs:string"/>
             <xs:element name="loaded" type="xs:dateTime"/>
-            <xs:element name="medium" type="xs:string"/>
+            <xs:element name="medium" type="mediaType"/>
         </xs:sequence>
     </xs:complexType>
     
