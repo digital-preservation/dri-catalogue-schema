@@ -109,6 +109,7 @@
         <xs:sequence>
             <xs:element name="label" type="xs:string"/>
             <xs:element name="loaded" type="xs:dateTime"/>
+            <xs:element name="medium" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
     
