@@ -22,7 +22,7 @@
     <xs:simpleType name="partStatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Identified"/>
-            <xs:enumeration value="LoadedPreingest"/>
+            <xs:enumeration value="LoadedPreIngest"/>
             <xs:enumeration value="LoadedHolding"/>
             <xs:enumeration value="LoadedHoldingPlusSandbox"/>
             <xs:enumeration value="PreIngesting"/>
