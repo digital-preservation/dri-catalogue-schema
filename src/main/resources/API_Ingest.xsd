@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    xmlns="http://nationalarchives.gov.uk/dri/ingest"
+    xmlns="http://nationalarchives.gov.uk/dri/catalogue/api/ingest"
     xmlns:api="http://nationalarchives.gov.uk/dri/catalogue/api"
-    targetNamespace="http://nationalarchives.gov.uk/dri/ingest">
+    targetNamespace="http://nationalarchives.gov.uk/dri/catalogue/api/ingest">
     
     <xs:import namespace="http://nationalarchives.gov.uk/dri/catalogue/api" schemaLocation="API_common.xsd"/>
     
@@ -49,74 +49,9 @@
         </xs:restriction>
     </xs:simpleType>
     
-    <xs:simpleType name="puidType">
-        <xs:restriction base="xs:anyURI">
-            <xs:pattern value="info:pronom/.*"/>
-        </xs:restriction>
-    </xs:simpleType>
-    
-    <xs:element name="puid" type="puidType">
-        <xs:annotation>
-            <xs:documentation>PRONOM Unique Identifier</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-        
-    <xs:complexType name="whitelistType">
-        <xs:sequence>
-            <xs:element ref="puid" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="unitIdType">
-        <xs:sequence>
-            <xs:element name="unitId" minOccurs="1" maxOccurs="1" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    
-    <xs:complexType name="partIdType">
-        <xs:sequence>
-            <xs:element name="unitId" minOccurs="1" maxOccurs="1" type="xs:string"/>
-            <xs:element name="series" minOccurs="1" maxOccurs="1" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>        
-    
-    <xs:complexType name="sipDataType">
-        <xs:sequence>
-            <xs:element name="identifier" type="api:simpleUuidType"/>
-            <xs:element name="collectionName" minOccurs="1" maxOccurs="1" type="xs:string"/>
-            <xs:element name="collectionCode" minOccurs="1" maxOccurs="1" type="xs:string"/>
-            <xs:element name="bornDigital" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
-        </xs:sequence>
-    </xs:complexType>
-    
-    <xs:complexType name="queryResultType">
-        <xs:sequence>
-            <!-- TODO should probably be xs:choice of these -->
-            <xs:element name="unitId" minOccurs="0" maxOccurs="1" type="unitIdType"/>
-            <xs:element name="partId" minOccurs="0" maxOccurs="1" type="partIdType"/>
-            <xs:element name="whitelist" minOccurs="0" maxOccurs="1" type="whitelistType"/>
-            <xs:element name="sipData" minOccurs="0" maxOccurs="1" type="sipDataType"/>
-            <xs:element name="catalogueMap" minOccurs="0" maxOccurs="1" type="api:catalogueMapType"/>
-        </xs:sequence>            
-    </xs:complexType>
-    
-    <xs:complexType name="queryType">
-        <xs:choice>
-            <xs:element name="unitId" type="unitIdType"/>
-            <xs:element name="partId" type="partIdType"/>
-            <xs:element name="limit" type="xs:int"/>
-        </xs:choice>
-    </xs:complexType>
-    
     <xs:complexType name="driUnitsType">
         <xs:sequence>
             <xs:element name="units" type="driUnitType" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="driPartsType">
-        <xs:sequence>
-            <xs:element name="parts" type="partIdType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -128,11 +63,52 @@
         </xs:sequence>
     </xs:complexType>
     
-    <xs:element name="query" type="queryType"/>
+    <xs:complexType name="unitIdType">
+        <xs:sequence>
+            <xs:element name="unitId" minOccurs="1" maxOccurs="1" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
     
-    <xs:element name="queryResult" type="queryResultType"/>
+    <xs:complexType name="partIdType">
+        <xs:sequence>
+            <xs:element name="unitId" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            <xs:element name="series" minOccurs="1" maxOccurs="1" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="driPartsType">
+        <xs:sequence>
+            <xs:element name="parts" type="partIdType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="whitelistType">
+        <xs:sequence>
+            <xs:element ref="puid" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="sipDataType">
+        <xs:sequence>
+            <xs:element name="identifier" type="api:simpleUuidType"/>
+            <xs:element name="collectionName" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            <xs:element name="collectionCode" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            <xs:element name="bornDigital" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="puidType">
+        <xs:restriction base="xs:anyURI">
+            <xs:pattern value="info:pronom/.*"/>
+        </xs:restriction>
+    </xs:simpleType>
     
     <xs:element name="driUnits" type="driUnitsType"/>
     
+    <xs:element name="puid" type="puidType">
+        <xs:annotation>
+            <xs:documentation>PRONOM Unique Identifier</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
 </xs:schema>
-
