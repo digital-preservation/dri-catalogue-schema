@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns="http://nationalarchives.gov.uk/dri/catalogue/api/query"
+    targetNamespace="http://nationalarchives.gov.uk/dri/catalogue/api/query"
+    xmlns:api="http://nationalarchives.gov.uk/dri/catalogue/api"
+    xmlns:ingest="http://nationalarchives.gov.uk/dri/catalogue/api/ingest">
+    
+    <xs:import namespace="http://nationalarchives.gov.uk/dri/catalogue/api" schemaLocation="API_common.xsd"/>
+    <xs:import namespace="http://nationalarchives.gov.uk/dri/catalogue/api/ingest" schemaLocation="API_Ingest.xsd"/>
+    
+    <xs:complexType name="queryResultType">
+        <xs:sequence>
+            <!-- TODO should probably be xs:choice of these -->
+            <xs:element name="unitId" minOccurs="0" maxOccurs="1" type="ingest:unitIdType"/>
+            <xs:element name="partId" minOccurs="0" maxOccurs="1" type="ingest:partIdType"/>
+            <xs:element name="whitelist" minOccurs="0" maxOccurs="1" type="ingest:whitelistType"/>
+            <xs:element name="sipData" minOccurs="0" maxOccurs="1" type="ingest:sipDataType"/>
+            <xs:element name="catalogueMap" minOccurs="0" maxOccurs="1" type="api:catalogueMapType"/>
+        </xs:sequence>            
+    </xs:complexType>
+    
+    <xs:complexType name="queryType">
+        <xs:choice>
+            <xs:element name="unitId" type="ingest:unitIdType"/>
+            <xs:element name="partId" type="ingest:partIdType"/>
+            <xs:element name="limit" type="xs:int"/>
+        </xs:choice>
+    </xs:complexType>
+    
+    <xs:element name="queryResult" type="queryResultType"/>
+    
+    <xs:element name="query" type="queryType"/>
+    
+</xs:schema>
