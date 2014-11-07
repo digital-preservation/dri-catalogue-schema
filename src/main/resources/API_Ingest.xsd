@@ -95,14 +95,15 @@
             <xs:element name="collectionCode" minOccurs="1" maxOccurs="1" type="xs:string"/>
             <xs:element name="bornDigital" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
             <xs:element name="digitalSurrogate" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
+            <xs:element name="fileADU" minOccurs="0" maxOccurs="1" type="xs:boolean"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="seriesDataType">
-        <xs:sequence>
-           <xs:element name="fileADU" minOccurs="0" maxOccurs="1" type="xs:boolean"/>
-        </xs:sequence>
-    </xs:complexType>
+    <!--<xs:complexType name="seriesDataType">-->
+        <!--<xs:sequence>-->
+           <!--<xs:element name="fileADU" minOccurs="0" maxOccurs="1" type="xs:boolean"/>-->
+        <!--</xs:sequence>-->
+    <!--</xs:complexType>-->
 
     <xs:simpleType name="puidType">
         <xs:restriction base="xs:anyURI">
