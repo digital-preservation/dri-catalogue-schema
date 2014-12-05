@@ -93,6 +93,7 @@
             <xs:element name="identifier" type="api:simpleUuidType"/>
             <xs:element name="collectionName" minOccurs="1" maxOccurs="1" type="xs:string"/>
             <xs:element name="collectionCode" minOccurs="1" maxOccurs="1" type="xs:string"/>
+            <xs:element name="accumulationRef" minOccurs="0" maxOccurs="1" type="xs:string"/>
             <xs:element name="bornDigital" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
             <xs:element name="digitalSurrogate" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
             <xs:element name="fileADU" minOccurs="0" maxOccurs="1" type="xs:boolean"/>
