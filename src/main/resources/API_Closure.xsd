@@ -52,7 +52,7 @@
             <xs:element name="descriptionClosureStatus" type="closureStatusType"/>
             <xs:element name="closureType" type="closureTypeType"/>
             <xs:element name="closureCode" type="closureCodeType"/>
-            <xs:element name="closurePeriod" type="closurePeriodType"/>
+            <xs:element name="closurePeriod" type="closurePeriodType" minOccurs="0"/>
             <xs:element name="openingDate" type="openingDateType"/>
             <xs:element name="author" type="authorType" minOccurs="0"/>
             <xs:element name="exemptionCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
