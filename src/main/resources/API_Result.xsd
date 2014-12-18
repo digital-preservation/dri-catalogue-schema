@@ -28,7 +28,7 @@
     <xs:element name="result" type="apiResultType"/>
 
 
-    <xs:complexType name="apiDigitalFileDirectoryResultType">
+    <xs:complexType name="directoryType">
         <xs:sequence>
             <xs:element name="Label" type="xs:string" minOccurs="0" maxOccurs="1"/>
             <xs:element name="ID" type="simpleUuidType" minOccurs="0" maxOccurs="1"/>
@@ -36,12 +36,12 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="apiDigitalFileDirectoryListResultType">
+    <xs:complexType name="directoriesType">
         <xs:sequence>
-            <xs:element name="digitalFileDirectoryList" type="apiDigitalFileDirectoryResultType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Directory" type="directoryType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:element name="digitalFileDirectoryListResult" type="apiDigitalFileDirectoryListResultType"/>
+    <xs:element name="Directories" type="directoriesType"/>
 
 </xs:schema>
