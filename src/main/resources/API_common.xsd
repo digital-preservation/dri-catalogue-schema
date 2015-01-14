@@ -84,5 +84,5 @@
             <xs:enumeration value="false"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
 </xs:schema>
