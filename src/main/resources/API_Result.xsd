@@ -37,11 +37,26 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="pieceType">
+        <xs:sequence>
+            <xs:element name="DeliverableUnitRef" type="simpleUuidType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="IAID" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="directoriesType">
         <xs:sequence>
             <xs:element name="Directory" type="directoryType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
+
+    <xs:complexType name="piecesType">
+        <xs:sequence>
+            <xs:element name="Piece" type="pieceType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="Pieces" type="piecesType"/>
 
     <xs:element name="Directories" type="directoriesType"/>
 
