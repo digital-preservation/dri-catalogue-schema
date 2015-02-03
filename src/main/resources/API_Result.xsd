@@ -52,7 +52,7 @@
 
     <xs:complexType name="piecesType">
         <xs:sequence>
-            <xs:element name="Piece" type="pieceType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Pieces" type="pieceType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
