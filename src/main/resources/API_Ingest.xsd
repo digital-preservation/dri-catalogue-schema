@@ -75,7 +75,7 @@
             <xs:element name="series" minOccurs="1" maxOccurs="1" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-    
+
     <xs:complexType name="driPartsType">
         <xs:sequence>
             <xs:element name="parts" type="partIdType" minOccurs="0" maxOccurs="unbounded"/>

@@ -24,6 +24,7 @@
         <xs:choice>
             <xs:element name="unitId" type="ingest:unitIdType"/>
             <xs:element name="partId" type="ingest:partIdType"/>
+            <xs:element name="partIds" type="ingest:driPartsType"/>
             <xs:element name="limit" type="xs:int"/>
         </xs:choice>
     </xs:complexType>
