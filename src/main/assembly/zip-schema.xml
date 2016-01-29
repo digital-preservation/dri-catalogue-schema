@@ -6,12 +6,14 @@
     <format>zip</format>
   </formats>
   <includeBaseDirectory>false</includeBaseDirectory>
-  <dependencySets>
-    <dependencySet>
+  <fileSets>
+    <fileSet>
+      <directory>${project.basedir}/src/main/resources</directory>
       <outputDirectory>/</outputDirectory>
-      <useProjectArtifact>true</useProjectArtifact>
-      <unpack>true</unpack>
-      <scope>runtime</scope>
-    </dependencySet>
-  </dependencySets>
+      <includes>
+        <include>*.xsd</include>
+        <include>*.xsl</include>
+      </includes>
+    </fileSet>
+  </fileSets>
 </assembly>
