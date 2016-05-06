@@ -14,6 +14,7 @@
             <xs:element name="unitId" minOccurs="0" maxOccurs="1" type="ingest:unitIdType"/>
             <xs:element name="partId" minOccurs="0" maxOccurs="1" type="ingest:partIdType"/>
             <xs:element name="whitelist" minOccurs="0" maxOccurs="1" type="ingest:whitelistType"/>
+            <xs:element name="exceptionlist" minOccurs="0" maxOccurs="1" type="ingest:exceptionlistType"/>
             <xs:element name="sipData" minOccurs="0" maxOccurs="1" type="ingest:sipDataType"/>
             <xs:element name="catalogueMap" minOccurs="0" maxOccurs="1" type="api:catalogueMapType"/>
             <xs:element name="schema" minOccurs="0" maxOccurs="unbounded" type="api:stringType"/>
