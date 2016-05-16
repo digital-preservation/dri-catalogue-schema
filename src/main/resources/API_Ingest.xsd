@@ -92,7 +92,7 @@
 
     <xs:complexType name="exceptionlistType">
         <xs:sequence>
-            <xs:element ref="puid" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
