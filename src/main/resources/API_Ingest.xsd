@@ -30,6 +30,8 @@
             <xs:enumeration value="PreIngesting"/>
             <xs:enumeration value="PreIngestFailed"/>
             <xs:enumeration value="PreIngested"/>
+            <xs:enumeration value="PreIngestedCopying"/>
+            <xs:enumeration value="PreIngestedCopied"/>
             <xs:enumeration value="Ingesting"/>
             <xs:enumeration value="IngestFailed"/>
             <xs:enumeration value="Ingested"/>
