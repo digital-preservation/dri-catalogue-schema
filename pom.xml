@@ -2,14 +2,25 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>uk.gov.tna.dri.catalogue</groupId>
-        <artifactId>dri-catalogue-parent</artifactId>
-        <version>1.35.65-SNAPSHOT</version>
-        <relativePath>../dri-catalogue-parent</relativePath>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
     </parent>
-    
+
+    <groupId>uk.gov.tna.dri.catalogue</groupId>
     <artifactId>dri-catalogue-schema</artifactId>
+    <version>1.35.65-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+   
+    <name>DRI Catalogue Schema</name>
+    <description>The schema of the internal catalogue used by DRI(Digital Repository Infrastructure)</description>
+
+    <organization>
+        <name>The National Archives</name>
+        <url>http://www.nationalarchives.gov.uk</url>
+    </organization>
+
 
     <build>
         <plugins>
